@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp3s21qfudyx6"]
+
+[ext_resource type="Texture2D" uid="uid://cpy17b2jekbg1" path="res://Sprites/pitchfork.png" id="1_4wtg1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y04gh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4wtg1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgv72"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_y04gh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(1, 1.5)
+shape = SubResource("CapsuleShape2D_vgv72")

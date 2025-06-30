@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdn1s6cistw1p"]
+
+[ext_resource type="Texture2D" uid="uid://b3uc024rcreyx" path="res://Sprites/newtarget.png" id="1_0lc32"]
+[ext_resource type="Script" path="res://scripts/target.gd" id="1_oh88v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b44h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0lc32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Target" type="Node2D"]
+script = ExtResource("1_oh88v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_b44h4")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://wkhy84ib176x"]
+
+[ext_resource type="Texture2D" uid="uid://krgxwo2sum2l" path="res://Sprites/angelfly-Sheet.png" id="1_0x5xv"]
+[ext_resource type="Script" path="res://scripts/angel.gd" id="1_prqrm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i2g6"]
+atlas = ExtResource("1_0x5xv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apglu"]
+atlas = ExtResource("1_0x5xv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akipl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i2g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apglu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nue7p"]
+
+[node name="Angel" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_prqrm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_akipl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_nue7p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://diuy8oqx3eaba"]
+
+[ext_resource type="Texture2D" uid="uid://btoamyeitvmop" path="res://Sprites/arrow.png" id="1_6p81c"]
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="1_fgn28"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0r2xo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybtaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6p81c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Arrow" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_fgn28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 1)
+shape = SubResource("CapsuleShape2D_0r2xo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ybtaq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

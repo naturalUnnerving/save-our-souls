@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://db72y1tfogsr3"]
+
+[ext_resource type="PackedScene" uid="uid://wkhy84ib176x" path="res://Scenes/angel.tscn" id="1_7btlb"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_lcpdf"]
+[ext_resource type="PackedScene" uid="uid://bdn1s6cistw1p" path="res://Scenes/target.tscn" id="2_3l1g3"]
+
+[node name="World" type="Node" groups=["Arrows"]]
+script = ExtResource("1_lcpdf")
+
+[node name="Angel" parent="." instance=ExtResource("1_7btlb")]
+position = Vector2(425, 425)
+
+[node name="Target" parent="." instance=ExtResource("2_3l1g3")]
+position = Vector2(425, 425)
