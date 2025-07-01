@@ -26,6 +26,7 @@ window/size/resizable=false
 [global_group]
 
 Arrows="Number of arrows on scene at once"
+attack_demons="group of attack demon type enemies"
 
 [input]
 

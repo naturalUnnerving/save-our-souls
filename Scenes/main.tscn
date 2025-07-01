@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_lcpdf"]
 [ext_resource type="PackedScene" uid="uid://bdn1s6cistw1p" path="res://Scenes/target.tscn" id="2_3l1g3"]
 
-[node name="World" type="Node" groups=["Arrows"]]
+[node name="World" type="Node" groups=["Arrows", "attack_demons"]]
 script = ExtResource("1_lcpdf")
 
 [node name="Angel" parent="." instance=ExtResource("1_7btlb")]
@@ -12,3 +12,13 @@ position = Vector2(425, 425)
 
 [node name="Target" parent="." instance=ExtResource("2_3l1g3")]
 position = Vector2(425, 425)
+
+[node name="Attack demon timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Start timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Attack demon timer" to="." method="_on_attack_demon_timer_timeout"]
