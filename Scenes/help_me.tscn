@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqnkfmoumcj3d"]
+[gd_scene load_steps=7 format=3 uid="uid://bqnkfmoumcj3d"]
 
+[ext_resource type="Script" path="res://scripts/help_me.gd" id="1_0xvga"]
 [ext_resource type="Texture2D" uid="uid://cxxqacfge0ghg" path="res://Sprites/helpme-Sheet.png" id="1_4n768"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7aoc"]
@@ -27,6 +28,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v63d6"]
 
 [node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_0xvga")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)

@@ -1,24 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://db72y1tfogsr3"]
+[gd_scene load_steps=11 format=3 uid="uid://db72y1tfogsr3"]
 
 [ext_resource type="PackedScene" uid="uid://wkhy84ib176x" path="res://Scenes/angel.tscn" id="1_7btlb"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_lcpdf"]
 [ext_resource type="PackedScene" uid="uid://bdn1s6cistw1p" path="res://Scenes/target.tscn" id="2_3l1g3"]
+[ext_resource type="Texture2D" uid="uid://y12killhd8dm" path="res://Sprites/background-Sheet.png" id="4_f12jj"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="4_ocinc"]
 
-[node name="World" type="Node" groups=["Arrows", "attack_demons"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl3wf"]
+atlas = ExtResource("4_f12jj")
+region = Rect2(0, 0, 800, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c43kg"]
+atlas = ExtResource("4_f12jj")
+region = Rect2(800, 0, 800, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgn42"]
+atlas = ExtResource("4_f12jj")
+region = Rect2(1600, 0, 800, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trs7p"]
+atlas = ExtResource("4_f12jj")
+region = Rect2(2400, 0, 800, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aa0jy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl3wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c43kg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgn42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trs7p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="World" type="Node" groups=["Angel", "Arrows", "Souls", "attack_demons"]]
 script = ExtResource("1_lcpdf")
 
 [node name="Angel" parent="." instance=ExtResource("1_7btlb")]
+z_index = 1
 position = Vector2(425, 425)
 
 [node name="Target" parent="." instance=ExtResource("2_3l1g3")]
 position = Vector2(425, 425)
 
 [node name="Attack demon timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 autostart = true
 
 [node name="Start timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(425, 425)
+scale = Vector2(1.06251, 1.328)
+script = ExtResource("4_ocinc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+sprite_frames = SubResource("SpriteFrames_aa0jy")
 
 [connection signal="timeout" from="Attack demon timer" to="." method="_on_attack_demon_timer_timeout"]

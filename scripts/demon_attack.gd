@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var angel = get_node("../Angel")
+var pitchfork = preload("res://Scenes/pitchfork.tscn")
 var target
 var direction
 var speed
@@ -36,3 +37,7 @@ func starting_pos():
 		x = screen_size.x
 	position.x = x
 	position.y = y
+
+func _on_pitchfork_timer_timeout():
+	var newPitchfork = pitchfork.instantiate()
+	add_sibling(newPitchfork)

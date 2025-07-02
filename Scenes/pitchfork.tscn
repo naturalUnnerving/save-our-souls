@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp3s21qfudyx6"]
+[gd_scene load_steps=5 format=3 uid="uid://bgymc8qteolle"]
 
 [ext_resource type="Texture2D" uid="uid://cpy17b2jekbg1" path="res://Sprites/pitchfork.png" id="1_4wtg1"]
+[ext_resource type="Script" path="res://scripts/pitchfork.gd" id="1_wkd1q"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_y04gh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dquu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -13,15 +14,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgv72"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ai81g"]
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Pitchfork" type="Area2D"]
+script = ExtResource("1_wkd1q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_y04gh")
+sprite_frames = SubResource("SpriteFrames_0dquu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 scale = Vector2(1, 1.5)
-shape = SubResource("CapsuleShape2D_vgv72")
+shape = SubResource("CapsuleShape2D_ai81g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
